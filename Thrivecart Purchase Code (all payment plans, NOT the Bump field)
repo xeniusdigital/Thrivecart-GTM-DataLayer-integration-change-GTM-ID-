@@ -1,0 +1,58 @@
+#Thrivecart Purchase Code (all payment plans, NOT the Bump field)
+<script>
+var products = [];
+if (_thrive_order.order.bump) {
+var bump = {
+'name': _thrive_order.order.bump.name,
+'price': _thrive_order.order.bump.total,
+'quantity': 1
+}
+products.push(bump);
+}
+if (_thrive_order.order.product) {
+var product = {
+'name': _thrive_order.order.product.name,
+'price': _thrive_order.order.product.total,
+'quantity': 1
+}
+products.push(product);
+}
+if (_thrive_order.order.upsells) {
+for(keys in _thrive_order.order.upsells){
+var product = {
+'name': _thrive_order.order.upsells[keys].name,
+'price': _thrive_order.order.upsells[keys].total,
+'quantity': 1
+}
+products.push(product);
+}
+}
+if (_thrive_order.order.downsells) {
+for(keys in _thrive_order.order.downsells){
+var product = {
+'name': _thrive_order.order.downsells[keys].name,
+'price': _thrive_order.order.downsells[keys].total,
+'quantity': 1
+}
+products.push(product);
+}
+}
+var dataLayer = window.dataLayer || [];
+dataLayer.push({
+'event': 'purchase',
+'ecommerce': {
+'purchase': {
+'actionField': {
+'id': _thrive_order.order.invoice_id,
+'affiliation': '',
+'revenue': _thrive_order.order.total,
+'tax': _thrive_order.order.tax,
+'shipping': _thrive_order.order.shipping,
+'discount': '0.00',
+'coupon': ''
+},
+'products': products
+}
+}
+});
+</script>
