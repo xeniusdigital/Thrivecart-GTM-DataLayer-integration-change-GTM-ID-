@@ -28,3 +28,9 @@ dataLayer.push({
 });
 }
 </script>
+
+#Sources:
+https://gist.github.com/measureschool/91b3f8d4a1c02ff5b611d9a8d652ebc5
+
+https://measureschool.com/thrive-cart-tracking/
+
