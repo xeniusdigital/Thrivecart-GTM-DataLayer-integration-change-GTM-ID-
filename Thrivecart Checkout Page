@@ -1,0 +1,29 @@
+#Thrivecart Checkout Page
+
+<script>
+var dataLayer  = window.dataLayer || [];
+var productsArray = []
+if(_thrive.product.bump_price){
+   var bump = {
+         'name': "Bump Product", 
+        'price': _thrive.product.bump_price,
+        'category': "Main"
+   }
+productsArray.push(bump);
+}
+var main = {
+        'name': _thrive.product.name, 
+        'price': _thrive.product.price,
+        'category': "Main"
+       }
+       productsArray.push(main);
+
+dataLayer.push({
+  'event': 'checkout',
+  'ecommerce': {
+    'detail': {
+      'products': productsArray
+     }
+   }
+});
+</script>
